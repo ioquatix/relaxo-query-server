@@ -19,6 +19,7 @@
 # THE SOFTWARE.
 
 require 'relaxo/query_server/process'
+require 'relaxo/query_server/library'
 
 module Relaxo
 	module QueryServer

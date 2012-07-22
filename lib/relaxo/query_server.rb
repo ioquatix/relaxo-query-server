@@ -21,10 +21,6 @@
 require 'relaxo/query_server/context'
 require 'relaxo/query_server/shell'
 
-# Provide useful standard functionality:
-require 'bigdecimal'
-require 'date'
-
 module Relaxo
 	module QueryServer
 		# Run the query server using `$stdin` and `$stdout` for communication.

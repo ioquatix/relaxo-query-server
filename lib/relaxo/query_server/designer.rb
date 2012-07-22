@@ -176,7 +176,7 @@ module Relaxo
 
 			# Implements the `validates_doc_update` action.
 			def validates(function, new_document, old_document, user_context)
-				ValidationProcess.new(@context, function).run(new_document, old_document, user_context)
+				Process.new(@context, function).run(new_document, old_document, user_context)
 				
 				# Unless ValidationError was raised, we are okay.
 				return VALIDATED

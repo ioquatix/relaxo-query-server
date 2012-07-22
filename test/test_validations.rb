@@ -14,7 +14,7 @@ class ValidationsTest < ContextTest
 		}
 		
 		response = @context.run ['ddoc', 'test', ['validate_doc_update'], [{'good' => true}, {'good' => true}, {}]]
-		assert_equal true, response
+		assert_equal 1, response
 		
 		response = @context.run ['ddoc', 'test', ['validate_doc_update'], [{'bad' => true}, {'good' => true}, {}]]
 		assert_equal({'forbidden' => 'bad'}, response)

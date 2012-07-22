@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+
+require 'relaxo/query_server'
+require 'optparse'
+
+OPTIONS = {
+	:safe => 4,
+}
+
+ARGV.options do |o|
+	script_name = File.basename($0)
+
+	o.set_summary_indent('  ')
+	o.banner = "Usage: #{script_name} [options] [directory]"
+	o.define_head "This program is designed to be used with CouchDB."
+
+	o.separator ""
+	o.separator "Help and Copyright information"
+
+	o.on("--safe [level]", "Set the ruby $SAFE level to product the execution environment.") do |level|
+		OPTIONS[:safe] = level.to_i
+	end
+
+	o.separator ""
+
+	o.on_tail("--copy", "Display copyright information") do
+		puts "#{script_name}. Copyright (c) 2012 Samuel Williams. Released under the MIT license."
+		puts "See http://www.oriontransfer.co.nz/ for more information."
+
+		exit
+	end
+
+	o.on_tail("-h", "--help", "Show this help message.") do
+		puts o
+		exit
+	end
+end.parse!
+
+Relaxo::QueryServer.run!(OPTIONS)

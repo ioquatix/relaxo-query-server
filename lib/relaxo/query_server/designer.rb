@@ -205,7 +205,7 @@ module Relaxo
 
 				# Compile the function if required:
 				if String === function
-					parent[path.last] = @context.parse_function(function, self, 'design-document')
+					parent[path.last] = @context.parse_function(function, binding, 'design-document')
 				else
 					function
 				end

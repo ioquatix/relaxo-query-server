@@ -54,7 +54,7 @@ module Relaxo
 			#     A composite list of items.
 			def reduce(functions, items)
 				functions = functions.collect do |function_text|
-					@context.parse_function(function_text, self)
+					@context.parse_function(function_text, binding)
 				end
 				
 				keys, values = [], []
@@ -80,7 +80,7 @@ module Relaxo
 			#     An array of values to reduce
 			def rereduce(functions, values)
 				functions = functions.collect do |function_text|
-					@context.parse_function(function_text, self)
+					@context.parse_function(function_text, binding)
 				end
 				
 				result = functions.map do |function|

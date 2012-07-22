@@ -34,7 +34,7 @@ module Relaxo
 			def parse_function(text, scope, filename = 'query-server')
 				safe_level = @options[:safe] || 0
 			
-				function = lambda { $SAFE = safe_level; eval(text, scope.send(:binding), filename) }.call
+				function = lambda { $SAFE = safe_level; eval(text, scope, filename) }.call
 			
 				unless function.respond_to? :call
 					raise CompilationError.new('Expression does not evaluate to procedure!')
@@ -68,6 +68,8 @@ module Relaxo
 				# ** Map functionality
 				when 'add_fun'
 					@mapper.add_function command[1]; true
+				when 'add_lib'
+					@mapper.add_libraries command[1]; true
 				when 'map_doc'
 					@mapper.map command[1]
 				when 'reset'

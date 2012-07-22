@@ -23,6 +23,12 @@ Edit your etc/couchdb/local.ini and add the following:
 
 Make sure the `relaxo-query-server` executable is accessible from `$PATH`.
 
+`relaxo-query-server` includes a variety of 3rd party modules by default, but it can include other libraries by specifying them on the command line:
+
+	relaxo-ruby = ruby1.9 -rdate -rbigdecimal relaxo-query-server
+
+(You can also load code by specifying libraries in your design documents and views.)
+
 To build and install the gem from source:
 
 	cd build/

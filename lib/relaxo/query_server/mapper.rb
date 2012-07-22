@@ -24,14 +24,20 @@ module Relaxo
 	module QueryServer
 		# Supports `Mapper` by providing a context with an `emit` method that collects the results from the mapping function.
 		class MappingProcess < Process
-			def initialize(context, function)
+			def initialize(context, mapper, function)
 				super(context, function)
+				
+				@mapper = mapper
 				@results = []
 			end
 			
 			# Emit a result
 			def emit(key, value = nil)
 				@results << [key, value]
+			end
+			
+			def load(name)
+				@mapper.load(name)
 			end
 			
 			def run(*args)
@@ -47,20 +53,36 @@ module Relaxo
 		end
 		
 		class Mapper
+			# The default library name
+			DEFAULT = ['_default']
+			
 			def initialize(context)
 				@context = context
 				@functions = []
+				
+				@libraries = {}
 			end
 			
 			# Adds a function by parsing the text, typically containing a textual representation of a lambda.
 			def add_function text
-				@functions << @context.parse_function(text, self)
+				@functions << @context.parse_function(text, binding)
+			end
+			
+			def load(path)
+				Library.for(@libraries, path)
+			end
+			
+			def add_libraries libraries
+				@libraries = libraries
 			end
 			
 			# Map a document to a set of results by appling all functions.
 			def map(document)
+				# Force load the default library:
+				load(DEFAULT)
+				
 				@functions.map do |function|
-					MappingProcess.new(@context, function).run(document)
+					MappingProcess.new(@context, @libraries, function).run(document)
 				end
 			end
 		end

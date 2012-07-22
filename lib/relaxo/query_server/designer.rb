@@ -193,7 +193,7 @@ module Relaxo
 
 			# Looks a up a function given a key path into the design document.
 			def function_for(path)
-				parent = self
+				parent = @attributes
 
 				function = path.inject(parent) do |current, key|
 					parent = current

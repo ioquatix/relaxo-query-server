@@ -17,7 +17,7 @@ class ContextTest < Test::Unit::TestCase
 	end
 	
 	def setup
-		setup_context :safe => 0
+		setup_context :safe => 2
 	end
 	
 	def teardown

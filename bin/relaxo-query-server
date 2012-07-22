@@ -4,7 +4,7 @@ require 'relaxo/query_server'
 require 'optparse'
 
 OPTIONS = {
-	:safe => 4,
+	:safe => 2
 }
 
 ARGV.options do |o|

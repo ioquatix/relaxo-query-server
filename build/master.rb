@@ -10,11 +10,11 @@ Dir.chdir("../") do
 		s.homepage = "http://www.oriontransfer.co.nz/gems/relaxo"
 		s.platform = Gem::Platform::RUBY
 		s.summary = "Relaxo Query Server provides support for executing CouchDB functions using Ruby."
-		s.files = FileList["{bin,lib,test}/**/*"] + ["README.md"]
+		s.files = FileList["{bin,lib,test}/**/*"] + ["rakefile.rb", "README.md"]
 
 		s.executables << 'relaxo-query-server'
 
-		s.add_dependency("relaxo", "~> 0.3.1")
+		s.add_dependency("relaxo", "~> 0.4.0")
 		s.add_dependency("json", "~> 1.7.3")
 
 		s.has_rdoc = "yard"

@@ -7,7 +7,9 @@ Relaxo Query Server
 
 The Relaxo Query Server implements the CouchDB Query Server protocol for CouchDB 1.1.0+. It provides a comprehensive Ruby-style view server along with full support for Design Document based processing.
 
-*This software is currently under development and not ready for stable production usage.*
+For more information and examples please see the main [project page][1].
+
+[1]: http://www.codeotaku.com/projects/relaxo/query-server
 
 Installation
 ------------
@@ -118,7 +120,7 @@ To Do
 License
 -------
 
-Copyright (c) 2010, 2011 Samuel G. D. Williams. <http://www.oriontransfer.co.nz>
+Copyright (c) 2010, 2012 Samuel G. D. Williams. <http://www.oriontransfer.co.nz>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

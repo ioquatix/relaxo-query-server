@@ -55,14 +55,16 @@ module Relaxo
 			def instance
 				unless @klass
 					@klass = Class.new
+					@klass.const_set(:ROOT, @root)
 
 					# Not sure if this is the best way to implement the `load` function
-					@klass.const_set('ROOT', @root)
-					@klass.class_exec(@root) do |root|
-						@@root = root
-
+					@klass.class_eval do
+						def self.root
+							self.const_get(:ROOT)
+						end
+						
 						def self.load(path)
-							Library.for(@@root, path)
+							Library.for(root, path)
 						end
 
 						def load(path)

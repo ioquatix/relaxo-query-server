@@ -1,8 +1,11 @@
 
-require 'context_test'
+require 'helper'
 require 'relaxo/query_server/library'
 
-class LibrariesTest < ContextTest
+require 'bigdecimal'
+require 'bigdecimal/util'
+
+class LibrariesTest < ContextualTestCase
 	def test_libraries
 		root = {
 			'lib' => {
@@ -14,7 +17,7 @@ class LibrariesTest < ContextTest
 					load('lib/all')
 
 					def bar
-						10.to_d
+						"10".to_d
 					end
 				}
 			}
@@ -25,7 +28,7 @@ class LibrariesTest < ContextTest
 		assert_not_nil object
 		assert object.respond_to? :bar
 		
-		assert_equal 10.to_d, object.bar
+		assert_equal "10".to_d, object.bar
 		
 		# For efficiency, the same object is returned both times
 		same_object = Relaxo::QueryServer::Library.for(root, 'lib/bar')

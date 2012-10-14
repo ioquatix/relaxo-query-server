@@ -1,7 +1,7 @@
 
-require 'context_test'
+require 'helper'
 
-class MapTest < ContextTest
+class MapTest < ContextualTestCase
 	def test_map
 		response = @context.run ["add_fun", "lambda{|doc| emit('foo', doc['a']); emit('bar', doc['a'])}"]
 		assert_equal true, response

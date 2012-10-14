@@ -1,7 +1,7 @@
 
-require 'context_test'
+require 'helper'
 
-class ValidationsTest < ContextTest
+class ValidationsTest < ContextualTestCase
 	def test_compiles_functions
 		create_design_document "test", {
 			"validate_doc_update" => %q{

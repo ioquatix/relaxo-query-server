@@ -1,7 +1,7 @@
 
-require 'context_test'
+require 'helper'
 
-class ListsTest < ContextTest
+class ListsTest < ContextualTestCase
 	ENTIRE = <<-RUBY
 		lambda{|head,request|
 			send "<ul>"

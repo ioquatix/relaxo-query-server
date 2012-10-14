@@ -1,7 +1,7 @@
 
-require 'context_test'
+require 'helper'
 
-class FiltersTest < ContextTest
+class FiltersTest < ContextualTestCase
 	BASIC = "lambda{|doc, req| doc['good'] == true}"
 	
 	def run_filter(opts={})

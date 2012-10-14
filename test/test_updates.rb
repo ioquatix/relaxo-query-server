@@ -1,7 +1,7 @@
 
-require 'context_test'
+require 'helper'
 
-class UpdatesTest < ContextTest
+class UpdatesTest < ContextualTestCase
 	def test_compiles_functions
 		create_design_document "test", {
 			"updates" => {

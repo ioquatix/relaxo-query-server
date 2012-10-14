@@ -1,7 +1,7 @@
 
-require 'context_test'
+require 'helper'
 
-class ShowsTest < ContextTest
+class ShowsTest < ContextualTestCase
 	STRING = "lambda{|doc, req| [doc['title'], doc['body']].join(' - ') }"
 	HASH = <<-EOF
       lambda{|doc, req|

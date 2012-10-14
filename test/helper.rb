@@ -1,12 +1,16 @@
 
 $LOAD_PATH.unshift File.expand_path("../../lib/", __FILE__)
 
+require 'rubygems'
 require 'test/unit'
 require 'stringio'
 
+require "relaxo/json"
 require "relaxo/query_server"
 
-class ContextTest < Test::Unit::TestCase
+class ContextualTestCase < Test::Unit::TestCase
+	undef_method :default_test
+	
 	def setup_context(options)
 		@shell = Relaxo::QueryServer::MockShell.new
 		@context = Relaxo::QueryServer::Context.new(@shell, options)

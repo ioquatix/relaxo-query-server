@@ -1,7 +1,7 @@
 
-require 'context_test'
+require 'helper'
 
-class ReduceTest < ContextTest
+class ReduceTest < ContextualTestCase
 	SUM = "lambda{|k,v,r| v.inject &:+ }"
 	CONCAT = "lambda{|k,v,r| r ? v.join('_') : v.join(':') }"
 	

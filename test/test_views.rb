@@ -1,7 +1,7 @@
 
-require 'context_test'
+require 'helper'
 
-class ViewsTest < ContextTest
+class ViewsTest < ContextualTestCase
 	def test_compiles_functions
 		response = @context.run ["add_fun", "lambda {|doc| emit(nil, nil)}"]
 		assert_equal true, response

@@ -8,8 +8,17 @@ require 'stringio'
 require "relaxo/json"
 require "relaxo/query_server"
 
+class Test::Unit::TestCase
+	def self.abstract_test_case!
+		self.class_eval do
+			def test_default
+			end
+		end
+	end
+end
+
 class ContextualTestCase < Test::Unit::TestCase
-	undef_method :default_test
+	abstract_test_case!
 	
 	def setup_context(options)
 		@shell = Relaxo::QueryServer::MockShell.new

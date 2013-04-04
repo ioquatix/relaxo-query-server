@@ -1,10 +1,4 @@
-Relaxo Query Server
-===================
-
-* Author: Samuel G. D. Williams (<http://www.oriontransfer.co.nz>)
-* Copyright (C) 2012 Samuel G. D. Williams.
-* Released under the MIT license.
-* [![Build Status](https://secure.travis-ci.org/ioquatix/relaxo-query-server.png)](http://travis-ci.org/ioquatix/relaxo-query-server)
+# Relaxo Query Server
 
 The Relaxo Query Server implements the CouchDB Query Server protocol for CouchDB 1.1.0+. It provides a comprehensive Ruby-style view server along with full support for Design Document based processing.
 
@@ -12,8 +6,9 @@ For more information and examples please see the main [project page][1].
 
 [1]: http://www.codeotaku.com/projects/relaxo/query-server
 
-Installation
-------------
+[![Build Status](https://secure.travis-ci.org/ioquatix/relaxo-query-server.png)](http://travis-ci.org/ioquatix/relaxo-query-server)
+
+## Installation
 
 Install the ruby gem as follows:
 
@@ -32,15 +27,9 @@ Make sure the `relaxo-query-server` executable is accessible from `$PATH`.
 
 (You can also load code by specifying libraries in your design documents and views.)
 
-To build and install the gem from source:
+##Usage
 
-	cd build/
-	sudo GEM=gem1.9 rake1.9 install_gem
-
-Usage
------
-
-### Mapping Function ###
+### Mapping Function
 
 Select documents of `type == 'user'`:
 
@@ -50,7 +39,7 @@ Select documents of `type == 'user'`:
 		end
 	end
 
-### Reduction Function ###
+### Reduction Function
 
 Calculate the sum:
 
@@ -58,7 +47,7 @@ Calculate the sum:
 		values.inject &:+
 	end
 
-### Design Document ###
+### Design Document
 
 A simple application:
 
@@ -110,18 +99,24 @@ The previous `design.yaml` document can be loaded using the `relaxo` client comm
 
 	relaxo http://localhost:5984/test design.yaml
 
-To Do
------
+## Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
+
+## To Do
 
 - Improve documentation, including better sample code.
 - More tests, including performance benchmarks.
 - Explore `parse_function` to improve performance of code execution by caching functions.
 - Helper methods for commonly used mapping functions.
 
-License
--------
+## License
 
-Copyright (c) 2010, 2012 Samuel G. D. Williams. <http://www.oriontransfer.co.nz>
+Copyright (c) 2010, 2012 Samuel G. D. Williams. <http://www.codeotaku.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -1,10 +1,7 @@
-# A sample Gemfile
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-gem "relaxo"
-gem "json"
-gem "rest-client"
-gem "rake"
+# Specify your gem's dependencies in relaxo-query-server.gemspec
+gemspec
 
 platforms :jruby do
   gem 'jruby-openssl'

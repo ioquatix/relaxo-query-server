@@ -53,34 +53,23 @@ module Relaxo
 			end
 		end
 		
-		class Mapper
-			# The default library name
-			DEFAULT = ['_default']
-			
+		class Mapper < Loader
 			def initialize(context)
+				super()
+				
 				@context = context
 				@functions = []
-				
-				@libraries = {}
 			end
 			
 			# Adds a function by parsing the text, typically containing a textual representation of a lambda.
-			def add_function text
+			def add_function(text)
 				@functions << @context.parse_function(text, binding)
-			end
-			
-			def load(path)
-				Library.for(@libraries, path)
-			end
-			
-			def add_libraries libraries
-				@libraries = libraries
 			end
 			
 			# Map a document to a set of results by appling all functions.
 			def map(document)
 				# Force load the default library:
-				load(DEFAULT)
+				load_default
 				
 				@functions.map do |function|
 					MappingProcess.new(@context, @libraries, function).run(document)

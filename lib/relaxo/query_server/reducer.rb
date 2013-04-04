@@ -19,6 +19,7 @@
 # THE SOFTWARE.
 
 require 'relaxo/query_server/process'
+require 'relaxo/query_server/library'
 
 module Relaxo
 	module QueryServer
@@ -35,9 +36,11 @@ module Relaxo
 		end
 		
 		# Implements the `reduce` and `rereduce` functions along with all associated state.
-		class Reducer
+		class Reducer < Loader
 			# Create a reducer attached to the given context.
 			def initialize(context)
+				super()
+				
 				@context = context
 			end
 			
@@ -53,6 +56,8 @@ module Relaxo
 			# @param [Array] items
 			#     A composite list of items.
 			def reduce(functions, items)
+				load_default
+				
 				functions = functions.collect do |function_text|
 					@context.parse_function(function_text, binding)
 				end
@@ -79,6 +84,8 @@ module Relaxo
 			# @param [Array] values
 			#     An array of values to reduce
 			def rereduce(functions, values)
+				load_default
+				
 				functions = functions.collect do |function_text|
 					@context.parse_function(function_text, binding)
 				end

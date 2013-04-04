@@ -78,5 +78,26 @@ module Relaxo
 				@instance ||= @klass.new
 			end
 		end
+		
+		class Loader
+			# The default library name
+			DEFAULT = ['_default']
+			
+			def initialize
+				@libraries = {}
+			end
+			
+			def load(path)
+				Library.for(@libraries, path)
+			end
+			
+			def add_libraries(libraries)
+				@libraries.merge!(libraries)
+			end
+			
+			def load_default
+				load(DEFAULT)
+			end
+		end
 	end
 end

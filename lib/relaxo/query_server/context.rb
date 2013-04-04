@@ -69,7 +69,8 @@ module Relaxo
 				when 'add_fun'
 					@mapper.add_function command[1]; true
 				when 'add_lib'
-					@mapper.add_libraries command[1]; true
+					@mapper.add_libraries command[1]
+					@reducer.add_libraries command[1]; true
 				when 'map_doc'
 					@mapper.map command[1]
 				when 'reset'

@@ -20,12 +20,6 @@
 
 module Relaxo
 	module QueryServer
-		module VERSION
-			MAJOR = 0
-			MINOR = 1
-			TINY  = 3
-
-			STRING = [MAJOR, MINOR, TINY].join('.')
-		end
+		VERSION = "0.1.3"
 	end
 end

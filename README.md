@@ -2,9 +2,6 @@
 
 The Relaxo Query Server implements the CouchDB Query Server protocol for CouchDB 1.1.0+. It provides a comprehensive Ruby-style view server along with full support for Design Document based processing.
 
-For more information and examples please see the main [project page][1].
-
-[1]: http://www.codeotaku.com/projects/relaxo/query-server
 
 [![Build Status](https://secure.travis-ci.org/ioquatix/relaxo-query-server.png)](http://travis-ci.org/ioquatix/relaxo-query-server)
 [![Code Climate](https://codeclimate.com/github/ioquatix/relaxo-query-server.png)](https://codeclimate.com/github/ioquatix/relaxo-query-server)

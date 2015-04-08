@@ -17,7 +17,7 @@ ARGV.options do |o|
 	o.separator ""
 	o.separator "Help and Copyright information"
 
-	o.on("--safe [level]", "Set the ruby $SAFE level to product the execution environment.") do |level|
+	o.on("--safe [level]", "Set the ruby $SAFE level to protect the execution environment.") do |level|
 		OPTIONS[:safe] = level.to_i
 	end
 

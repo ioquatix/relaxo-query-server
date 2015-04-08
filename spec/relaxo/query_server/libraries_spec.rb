@@ -1,12 +1,18 @@
 
-require 'helper'
 require 'relaxo/query_server/library'
 
 require 'bigdecimal'
 require 'bigdecimal/util'
 
-class LibrariesTest < ContextualTestCase
-	def test_libraries
+require_relative 'spec_helper'
+
+RSpec.describe "Libraries" do
+	before :all do
+		@shell = Relaxo::QueryServer::MockShell.new
+		@context = Relaxo::QueryServer::Context.new(@shell, safe: 2)
+	end
+	
+	it "should load a library" do
 		root = {
 			'lib' => {
 				'all' => %q{
@@ -24,18 +30,15 @@ class LibrariesTest < ContextualTestCase
 		}
 		
 		object = Relaxo::QueryServer::Library.for(root, 'lib/bar')
-		
-		assert_not_nil object
-		assert object.respond_to? :bar
-		
-		assert_equal "10".to_d, object.bar
+		expect(object).to be_respond_to :bar
+		expect(object.bar).to be == "10".to_d
 		
 		# For efficiency, the same object is returned both times
 		same_object = Relaxo::QueryServer::Library.for(root, 'lib/bar')
-		assert_equal object, same_object
+		expect(same_object).to be object
 	end
 	
-	def test_map_reduce_libraries
+	it "should use library functions for map/reduce" do
 		library_code = %q{
 			def check_bar(doc)
 				yield doc if doc['bar'] == true
@@ -51,12 +54,12 @@ class LibrariesTest < ContextualTestCase
 		}
 		
 		response = @context.run ['add_lib', {'foo' => library_code}]
-		assert_equal true, response
+		expect(response).to be true
 		
 		response = @context.run ['add_fun', map_function_code]
-		assert_equal true, response
+		expect(response).to be true
 		
 		response = @context.run ['map_doc', {'bar' => true}]
-		assert_equal [[[true, nil]]], response
+		expect(response).to be == [[[true, nil]]]
 	end
 end

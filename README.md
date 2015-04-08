@@ -7,6 +7,8 @@ For more information and examples please see the main [project page][1].
 [1]: http://www.codeotaku.com/projects/relaxo/query-server
 
 [![Build Status](https://secure.travis-ci.org/ioquatix/relaxo-query-server.png)](http://travis-ci.org/ioquatix/relaxo-query-server)
+[![Code Climate](https://codeclimate.com/github/ioquatix/relaxo-query-server.png)](https://codeclimate.com/github/ioquatix/relaxo-query-server)
+[![Coverage Status](https://coveralls.io/repos/ioquatix/relaxo-query-server/badge.svg)](https://coveralls.io/r/ioquatix/relaxo-query-server)
 
 ## Installation
 
@@ -23,7 +25,7 @@ Make sure the `relaxo-query-server` executable is accessible from `$PATH`.
 
 `relaxo-query-server` includes a variety of 3rd party modules by default, but it can include other libraries by specifying them on the command line:
 
-	relaxo-ruby = ruby1.9 -rdate -rbigdecimal relaxo-query-server
+	relaxo-ruby = ruby -rdate -rbigdecimal relaxo-query-server
 
 (You can also load code by specifying libraries in your design documents and views.)
 
@@ -116,7 +118,9 @@ The previous `design.yaml` document can be loaded using the `relaxo` client comm
 
 ## License
 
-Copyright (c) 2010, 2012 Samuel G. D. Williams. <http://www.codeotaku.com>
+Released under the MIT license.
+
+Copyright, 2015, by [Samuel G. D. Williams](http://www.codeotaku.com/samuel-williams).
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -21,6 +21,10 @@ ARGV.options do |o|
 	o.on("--safe [level]", "Set the ruby $SAFE level to protect the execution environment.") do |level|
 		OPTIONS[:safe] = level.to_i
 	end
+	
+	o.on("--debug path", "Log all requests to the given log file") do |path|
+		OPTIONS[:debug] = path
+	end
 
 	o.separator ""
 

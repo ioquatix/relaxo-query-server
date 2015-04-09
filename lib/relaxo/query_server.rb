@@ -28,6 +28,11 @@ module Relaxo
 			shell = Shell.new($stdin, $stdout)
 			context = Context.new(shell, options)
 			
+			if options[:debug]
+				log = File.open(options[:debug], 'a')
+				shell = DebugShell.new(log, shell)
+			end
+			
 			shell.run do |command|
 				context.run(command)
 			end

@@ -49,13 +49,33 @@ module Relaxo
 				begin
 					while true
 						command = read_object
-
+						
 						result = yield command
-
+						
 						write_object(result)
 					end
 				rescue EOFError
 					# Finish...
+				end
+			end
+		end
+		
+		class DebugShell
+			def initialize(log, wrapper)
+				@log = log
+				@wrapper = wrapper
+			end
+			
+			# Read commands from `input`, execute them and then write out the results.
+			def run
+				@wrapper.run do |command|
+					@log.puts "-> #{command.inspect}"
+					
+					result = yield command
+					
+					@log.puts "<- #{result.inspect}"
+					
+					next result
 				end
 			end
 		end

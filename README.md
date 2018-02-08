@@ -26,7 +26,7 @@ Make sure the `relaxo-query-server` executable is accessible from `$PATH`.
 
 (You can also load code by specifying libraries in your design documents and views.)
 
-##Usage
+## Usage
 
 ### Mapping Function
 
